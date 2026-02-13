@@ -3,7 +3,7 @@
 A transparent Firefox theme for macOS with vibrancy blur, rounded panels, and a subtle gradient tint. Supports both vertical and horizontal tab layouts.
 
 <!-- Add a screenshot: place it in the repo and update the path -->
-<!-- ![Liquid Fox screenshot](screenshot.png) -->
+![Liquid Fox screenshot](screenshot.png)
 
 ## Features
 
