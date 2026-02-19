@@ -162,6 +162,11 @@
     padding-bottom: 2px !important;
   }
 
+  /* --- Pinned tabs: wider minimum for better click targets --- */
+  #pinned-tabs-container[orient="vertical"] {
+    --tab-pinned-min-width-expanded: 85px !important;
+  }
+
   /* --- Tab rounding + selected tab styling --- */
   #tabbrowser-tabs {
     --tab-border-radius: var(--liquid-radius-small) !important;
