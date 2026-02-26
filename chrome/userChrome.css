@@ -466,3 +466,46 @@
   margin-left: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
+
+/* ============================================
+   Split View: fix spacing, borders, and outlines
+   ============================================ */
+#tabbrowser-tabpanels[splitview] {
+
+  /* --- Remove all outlines, flatten inactive pane shadow --- */
+  .browserContainer {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  /* --- Tighter spacing between split panes --- */
+  .split-view-panel.split-view-panel-active {
+    margin: 1px !important;
+  }
+
+  /* --- Active pane: elevated shadow for emphasis --- */
+  .deck-selected > .browserContainer {
+    box-shadow:
+      0 0.5px 0 0 rgba(255, 255, 255, 0.35),
+      0 2px 8px rgba(0, 0, 0, 0.08),
+      0 8px 28px rgba(0, 0, 0, 0.12) !important;
+  }
+}
+
+/* --- Split view splitter: thin + blue on hover, like sidebar --- */
+.split-view-splitter {
+  width: 4px !important;
+  min-width: 4px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.split-view-splitter:hover {
+  background: var(--focus-outline-color) !important;
+}
+
+/* --- Split view tab entry: subtle divider between tab names --- */
+tab-split-view-wrapper:not([hasactivetab]) .tabbrowser-tab:last-child {
+  border-inline-start: 1px solid light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12)) !important;
+}
