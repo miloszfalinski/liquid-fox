@@ -321,6 +321,17 @@
     background-color: rgba(0, 0, 0, 0.15) !important;
   }
 
+  /* --- Gap after last pinned tab before regular tabs --- */
+  .tabbrowser-tab[pinned] + .tabbrowser-tab:not([pinned]),
+  .tabbrowser-tab[pinned] + tab-group {
+    margin-inline-start: 6px !important;
+  }
+
+  /* --- Bookmarks bar: match nav-bar side margins --- */
+  #PersonalToolbar {
+    margin-inline: var(--liquid-padding) !important;
+  }
+
   /* --- Window bottom padding (same trick as vertical tabs) --- */
   #browser {
     padding-bottom: 2px !important;
