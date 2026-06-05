@@ -533,3 +533,36 @@
 tab-split-view-wrapper:not([hasactivetab]) .tabbrowser-tab:last-child {
   border-inline-start: 1px solid light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12)) !important;
 }
+
+/* ============================================
+   Tab hover preview: frosted glass card matching the window
+   ============================================ */
+#tab-preview-panel {
+  --panel-background:
+    light-dark(rgba(248, 248, 250, 0.7), rgba(28, 28, 32, 0.68)) !important;
+  --panel-border-color:
+    light-dark(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.12)) !important;
+  --panel-border-radius: var(--liquid-radius) !important;
+  box-shadow: var(--liquid-shadow) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  overflow: hidden !important;
+}
+
+/* Inner surfaces stay transparent so the frosted backdrop reads through */
+#tab-preview-panel .tab-preview-container,
+#tab-preview-panel .tab-preview-text-container {
+  background: transparent !important;
+}
+
+/* Thumbnail: round to the small radius, drop its opaque fill */
+#tab-preview-panel .tab-preview-thumbnail-container,
+#tab-preview-panel .tab-preview-thumbnail-container > img,
+#tab-preview-panel .tab-preview-thumbnail-container > canvas {
+  background: transparent !important;
+  border-radius: var(--liquid-radius-small) !important;
+}
+
+/* Secondary URL line: a touch dimmer, like the rest of the chrome */
+#tab-preview-panel .tab-preview-uri {
+  opacity: 0.7 !important;
+}
