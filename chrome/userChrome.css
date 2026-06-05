@@ -286,7 +286,9 @@
    ============================================ */
 :root:not([windowtype="Toolkit:PictureInPicture"], [inDOMFullscreen]):has(sidebar-main[expanded] #tabbrowser-tabs) {
   #pinned-tabs-container[orient="vertical"] {
-    --tab-pinned-min-width-expanded: 85px !important;
+    /* Lower = more pinned tiles per row (the grid uses auto-fill on this min
+       width). 50px packs at least 2 tiles per row at the current width. */
+    --tab-pinned-min-width-expanded: 50px !important;
   }
 }
 
