@@ -155,13 +155,15 @@
     padding-bottom: 2px !important;
   }
 
-  /* --- Web content frame --- */
+  /* --- Web content frame ---
+     Symmetric inline margins so the card keeps an even border on both sides
+     regardless of which side the sidebar sits on (left or right). */
   .browserContainer {
     position: relative !important;
     border-radius: var(--liquid-radius) !important;
     overflow: hidden !important;
     box-shadow: var(--liquid-shadow) !important;
-    margin: 0 var(--liquid-padding) calc(var(--liquid-padding) - 2px) 0 !important;
+    margin: 0 var(--liquid-padding) calc(var(--liquid-padding) - 2px) var(--liquid-padding) !important;
   }
 
   /* --- Sidebar panels (AI, bookmarks, history, etc.) --- */
