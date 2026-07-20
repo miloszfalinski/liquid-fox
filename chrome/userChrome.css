@@ -15,8 +15,8 @@
   --liquid-padding: 8px;
   --liquid-shadow:
     0 0.5px 0 0 rgba(255, 255, 255, 0.35),
-    0 2px 6px rgba(0, 0, 0, 0.12),
-    0 10px 32px rgba(0, 0, 0, 0.18);
+    0 1.5px 4.5px rgba(0, 0, 0, 0.08),
+    0 7px 24px rgba(0, 0, 0, 0.12);
   --liquid-shadow-small:
     0 0.5px 0 0 rgba(255, 255, 255, 0.35),
     0 1px 3px rgba(0, 0, 0, 0.04),
@@ -291,9 +291,7 @@
    ============================================ */
 :root:not([windowtype="Toolkit:PictureInPicture"], [inDOMFullscreen]):has(sidebar-main[expanded] #tabbrowser-tabs) {
   #pinned-tabs-container[orient="vertical"] {
-    /* Lower = more pinned tiles per row (the grid uses auto-fill on this min
-       width). 50px packs at least 2 tiles per row at the current width. */
-    --tab-pinned-min-width-expanded: 50px !important;
+    --tab-pinned-min-width-expanded: 85px !important;
   }
 }
 
