@@ -15,8 +15,8 @@
   --liquid-padding: 8px;
   --liquid-shadow:
     0 0.5px 0 0 rgba(255, 255, 255, 0.35),
-    0 1px 3px rgba(0, 0, 0, 0.04),
-    0 4px 16px rgba(0, 0, 0, 0.06);
+    0 2px 6px rgba(0, 0, 0, 0.12),
+    0 10px 32px rgba(0, 0, 0, 0.18);
   --liquid-shadow-small:
     0 0.5px 0 0 rgba(255, 255, 255, 0.35),
     0 1px 3px rgba(0, 0, 0, 0.04),
@@ -90,10 +90,15 @@
     background: transparent !important;
   }
 
-  /* --- Expand-on-hover sidebar: restore overlay background --- */
+  /* --- Expand-on-hover sidebar: floating overlay card --- */
   &[sidebar-expand-on-hover] #sidebar-main[sidebar-launcher-expanded] {
     background: light-dark(rgba(232, 232, 232, 0.97), rgba(32, 32, 32, 0.97)) !important;
-    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08) !important;
+    border-radius: 0 var(--liquid-radius) var(--liquid-radius) 0 !important;
+    box-shadow:
+      0 0 0 0.5px rgba(0, 0, 0, 0.08),
+      2px 3px 10px rgba(0, 0, 0, 0.14),
+      8px 10px 28px rgba(0, 0, 0, 0.20),
+      16px 22px 56px rgba(0, 0, 0, 0.24) !important;
   }
 
 }
@@ -155,13 +160,15 @@
     padding-bottom: 2px !important;
   }
 
-  /* --- Web content frame --- */
+  /* --- Web content frame ---
+     Symmetric inline margins so the card keeps an even border on both sides
+     regardless of which side the sidebar sits on (left or right). */
   .browserContainer {
     position: relative !important;
     border-radius: var(--liquid-radius) !important;
     overflow: hidden !important;
     box-shadow: var(--liquid-shadow) !important;
-    margin: 0 var(--liquid-padding) calc(var(--liquid-padding) - 2px) 0 !important;
+    margin: 0 var(--liquid-padding) calc(var(--liquid-padding) - 2px) var(--liquid-padding) !important;
   }
 
   /* --- Sidebar panels (AI, bookmarks, history, etc.) --- */
@@ -284,7 +291,9 @@
    ============================================ */
 :root:not([windowtype="Toolkit:PictureInPicture"], [inDOMFullscreen]):has(sidebar-main[expanded] #tabbrowser-tabs) {
   #pinned-tabs-container[orient="vertical"] {
-    --tab-pinned-min-width-expanded: 85px !important;
+    /* Lower = more pinned tiles per row (the grid uses auto-fill on this min
+       width). 50px packs at least 2 tiles per row at the current width. */
+    --tab-pinned-min-width-expanded: 50px !important;
   }
 }
 
@@ -523,4 +532,37 @@
 /* --- Split view tab entry: subtle divider between tab names --- */
 tab-split-view-wrapper:not([hasactivetab]) .tabbrowser-tab:last-child {
   border-inline-start: 1px solid light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12)) !important;
+}
+
+/* ============================================
+   Tab hover preview: frosted glass card matching the window
+   ============================================ */
+#tab-preview-panel {
+  --panel-background:
+    light-dark(rgba(248, 248, 250, 0.7), rgba(28, 28, 32, 0.68)) !important;
+  --panel-border-color:
+    light-dark(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.12)) !important;
+  --panel-border-radius: var(--liquid-radius) !important;
+  box-shadow: var(--liquid-shadow) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  overflow: hidden !important;
+}
+
+/* Inner surfaces stay transparent so the frosted backdrop reads through */
+#tab-preview-panel .tab-preview-container,
+#tab-preview-panel .tab-preview-text-container {
+  background: transparent !important;
+}
+
+/* Thumbnail: round to the small radius, drop its opaque fill */
+#tab-preview-panel .tab-preview-thumbnail-container,
+#tab-preview-panel .tab-preview-thumbnail-container > img,
+#tab-preview-panel .tab-preview-thumbnail-container > canvas {
+  background: transparent !important;
+  border-radius: var(--liquid-radius-small) !important;
+}
+
+/* Secondary URL line: a touch dimmer, like the rest of the chrome */
+#tab-preview-panel .tab-preview-uri {
+  opacity: 0.7 !important;
 }
